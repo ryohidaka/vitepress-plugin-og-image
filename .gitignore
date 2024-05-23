@@ -24,3 +24,7 @@ dist-ssr
 *.sw?
 
 coverage
+
+# VitePress
+src/example/docs/.vitepress/dist
+src/example/docs/.vitepress/cache
