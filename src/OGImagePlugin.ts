@@ -1,5 +1,5 @@
 import { HeadConfig, SiteConfig, TransformContext } from "vitepress";
-import { MdFile, OgImagePluginParams } from "./types";
+import { Author, MdFile, OgImagePluginParams } from "./types";
 import { fetchFonts, generateAndSaveImage, getSlugByPath } from "./utils";
 import path from "path";
 
@@ -13,14 +13,17 @@ export class OgImagePlugin {
   // Array to store metadata of Markdown files for generating og:image tags.
   mdFiles: MdFile[] = [];
 
+  author?: Author;
+
   /**
    * Creates an instance of OgImagePlugin.
    * @param params Parameters for the OgImagePlugin.
    * @param params.destDir The directory where the generated og:image files will be stored. Defaults to DEFAULT_DEST_DIR if not provided.
    */
   constructor(params: OgImagePluginParams) {
-    const { destDir } = params;
+    const { author, destDir } = params;
     this.destDir = destDir;
+    this.author = author;
   }
 
   /**
@@ -71,7 +74,7 @@ export class OgImagePlugin {
     // Use Promise.all to generate and save images for all markdown files concurrently.
     await Promise.all(
       this.mdFiles.map((file) =>
-        generateAndSaveImage(file, siteConfig.outDir, options),
+        generateAndSaveImage(file, siteConfig.outDir, options, this.author),
       ),
     );
   }

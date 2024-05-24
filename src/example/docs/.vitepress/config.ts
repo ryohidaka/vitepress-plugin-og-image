@@ -3,6 +3,7 @@ import { OgImagePlugin } from "../../../index";
 
 const ogImagePlugin = new OgImagePlugin({
   destDir: "/og",
+  author: { name: "Ryo Hidaka", imageURL: "https://ryohidaka.jp/icon.png" },
 });
 
 

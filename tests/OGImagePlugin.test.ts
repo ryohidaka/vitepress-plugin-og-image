@@ -7,6 +7,10 @@ describe("OgImagePlugin", () => {
   beforeEach(() => {
     ogImagePlugin = new OgImagePlugin({
       destDir: "/og",
+      author: {
+        name: "Test Author",
+        imageURL: "https://via.placeholder.com/500x200",
+      },
     });
   });
 

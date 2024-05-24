@@ -1,5 +1,5 @@
 import DefaultTemplate from "../components/default";
-import { MdFile } from "@/types";
+import { Author, MdFile } from "@/types";
 import fs from "fs";
 import path from "path";
 import { ReactNode } from "react";
@@ -54,15 +54,17 @@ const savePNGFile = (
  * @param {Object} file - The markdown file object containing file path and title.
  * @param {string} outDir - The build output location for the site.
  * @param {Object} options - Additional options for satori.
+ * @param {Object} author - The author to display in the template.
  */
 export const generateAndSaveImage = async (
   file: MdFile,
   outDir: string,
   options: SatoriOptions,
+  author?: Author,
 ) => {
   try {
-    // Generate an HTML element using the default template with the file's title.
-    const element = DefaultTemplate(file.title);
+    // Generate an HTML element using the default template with the file's title and author.
+    const element = DefaultTemplate(file.title, author);
 
     // Determine the path where the image will be saved.
     const imagePath = path.join(outDir, file.path);
