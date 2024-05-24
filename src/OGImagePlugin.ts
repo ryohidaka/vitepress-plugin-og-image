@@ -1,6 +1,6 @@
 import { HeadConfig, TransformContext } from "vitepress";
 import { MdFile, OgImagePluginParams } from "./types";
-import { fetchFonts, getSlugByPath } from "./utils";
+import { fetchFonts, generateImage, getSlugByPath } from "./utils";
 import path from "path";
 
 /**
@@ -67,6 +67,8 @@ export class OgImagePlugin {
       height: 630,
       fonts,
     };
-    console.log(options);
+
+    // Use Promise.all to generate images for all markdown files concurrently.
+    await Promise.all(this.mdFiles.map((file) => generateImage(file, options)));
   }
 }
