@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/ryohidaka/vitepress-plugin-og-image/compare/v0.1.0...v0.1.1) (2024-05-24)
+
+
+### Miscellaneous Chores
+
+* release 0.1.1 ([fa61991](https://github.com/ryohidaka/vitepress-plugin-og-image/commit/fa619915ca2bb9b99120b4fd8accb987e540e8a3))
+
 ## 0.1.0 (2024-05-24)
 
 
