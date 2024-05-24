@@ -1,6 +1,6 @@
 import { HeadConfig, TransformContext } from "vitepress";
 import { MdFile, OgImagePluginParams } from "./types";
-import { getSlugByPath } from "./utils";
+import { fetchFonts, getSlugByPath } from "./utils";
 import path from "path";
 
 /**
@@ -50,5 +50,23 @@ export class OgImagePlugin {
         },
       ],
     ];
+  }
+
+  /**
+   * Asynchronously generates and saves images for markdown files.
+   * @param {SiteConfig} siteConfig - Configuration object for the site.
+   * @returns {Promise<void>}
+   */
+  async buildEnd() {
+    // Fetch fonts buffer asynchronously.
+    const fonts = await fetchFonts();
+
+    // Define options for satori.
+    const options = {
+      width: 1200,
+      height: 630,
+      fonts,
+    };
+    console.log(options);
   }
 }

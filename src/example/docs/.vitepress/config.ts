@@ -34,4 +34,7 @@ export default defineConfig({
   transformHead(context) {
     return [...ogImagePlugin.transformHead(context)];
   },
+  buildEnd() {
+    ogImagePlugin.buildEnd();
+  },
 });
