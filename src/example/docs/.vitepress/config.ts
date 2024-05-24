@@ -1,4 +1,10 @@
 import { defineConfig } from "vitepress";
+import { OgImagePlugin } from "../../../index";
+
+const ogImagePlugin = new OgImagePlugin({
+  destDir: "/og",
+});
+
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -24,5 +30,8 @@ export default defineConfig({
     socialLinks: [
       { icon: "github", link: "https://github.com/vuejs/vitepress" },
     ],
+  },
+  transformHead(context) {
+    return [...ogImagePlugin.transformHead(context)];
   },
 });
