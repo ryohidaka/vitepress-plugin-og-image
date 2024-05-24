@@ -52,7 +52,8 @@
     "vitest": "^1.4.0"
   },
   "dependencies": {
-    "satori": "^0.10.13"
+    "satori": "^0.10.13",
+    "sharp": "^0.33.4"
   },
   "peerDependencies": {
     "react": "^18.2.0"
