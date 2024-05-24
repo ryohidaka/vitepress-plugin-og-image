@@ -49,5 +49,8 @@
     "vite-tsconfig-paths": "^4.3.2",
     "vitepress": "^1.2.2",
     "vitest": "^1.4.0"
+  },
+  "dependencies": {
+    "satori": "^0.10.13"
   }
 }
