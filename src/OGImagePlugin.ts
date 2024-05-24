@@ -1,6 +1,6 @@
-import { HeadConfig, TransformContext } from "vitepress";
+import { HeadConfig, SiteConfig, TransformContext } from "vitepress";
 import { MdFile, OgImagePluginParams } from "./types";
-import { fetchFonts, generateImage, getSlugByPath } from "./utils";
+import { fetchFonts, generateAndSaveImage, getSlugByPath } from "./utils";
 import path from "path";
 
 /**
@@ -57,7 +57,7 @@ export class OgImagePlugin {
    * @param {SiteConfig} siteConfig - Configuration object for the site.
    * @returns {Promise<void>}
    */
-  async buildEnd() {
+  async buildEnd(siteConfig: SiteConfig) {
     // Fetch fonts buffer asynchronously.
     const fonts = await fetchFonts();
 
@@ -68,7 +68,11 @@ export class OgImagePlugin {
       fonts,
     };
 
-    // Use Promise.all to generate images for all markdown files concurrently.
-    await Promise.all(this.mdFiles.map((file) => generateImage(file, options)));
+    // Use Promise.all to generate and save images for all markdown files concurrently.
+    await Promise.all(
+      this.mdFiles.map((file) =>
+        generateAndSaveImage(file, siteConfig.outDir, options),
+      ),
+    );
   }
 }
