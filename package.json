@@ -2,6 +2,15 @@
   "name": "vitepress-plugin-og-image",
   "version": "0.1.0",
   "description": "A VitePress plugin to generate OGP images.",
+  "keywords": [
+    "vitepress",
+    "vitepress-plugin",
+    "markdown",
+    "open-graph-protocol",
+    "opengraph",
+    "open-graph",
+    "ogp"
+  ],
   "type": "module",
   "main": "./dist/index.umd.cjs",
   "module": "./dist/index.js",
