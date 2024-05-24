@@ -7,8 +7,6 @@
 
 ## Overview
 
-## Notes
-
 ## Installation
 
 You can install this library using npm:
@@ -19,7 +17,44 @@ npm install vitepress-plugin-og-image
 
 ## Usage
 
+- Import into VitePress `config.ts` file for use.
+- Set the path of the OG image in the metadata with the `transformHead` hook
+- Generate OG image entities with the `buildEnd` hook.
+
+### Params
+
+| key               | type     | required | description                                                             |
+| ----------------- | -------- | -------- | ----------------------------------------------------------------------- |
+| `destDir`         | `string` | ✔       | OG image placement directory specified by **relative path from outDir** |
+| `author`          | `object` | ❌       | Used to include the author's name or image in the OG image              |
+| `author.name`     | `string` | ❌       | Specify the author's name to be displayed                               |
+| `author.imageURL` | `string` | ❌       | Specify the author's avatar image url to be displayed                   |
+
+### `config.ts`
+
+```ts
+const ogImagePlugin = new OgImagePlugin({
+  destDir: "/og",
+  author: { name: "Author Name", imageURL: "{Author Avatar URL}" },
+});
+
+// https://vitepress.dev/reference/site-config
+export default defineConfig({
+  transformHead(context) {
+    return [
+      ["meta", { property: "og:title", content: context.pageData.title }],
+      ...ogImagePlugin.transformHead(context),
+    ];
+  },
+  buildEnd(siteConfig) {
+    ogImagePlugin.buildEnd(siteConfig);
+  },
+});
+```
+
 ## Link
+
+- [VitePress](https://vitepress.dev/)
 
 ## License
 
