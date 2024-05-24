@@ -9,6 +9,10 @@
 
 A VitePress plugin to generate OGP images.
 
+## Sample
+
+![Sample](./images/sample.png)
+
 ## Installation
 
 You can install this library using npm:
