@@ -7,6 +7,8 @@
 
 ## Overview
 
+A VitePress plugin to generate OGP images.
+
 ## Installation
 
 You can install this library using npm:
